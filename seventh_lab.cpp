@@ -6,10 +6,17 @@ using std::cin;
 using std::swap;
 using std::endl;
 
-
 std::default_random_engine generator; // Объекты, генерирующие равномерно распределенные числа.
 std::uniform_int_distribution<int> distribution(1,100); // Объекты, которые преобразуют последовательности чисел, сгенерированные генератором, в последовательности чисел, 
                                                         // которые соответствуют определенному распределению случайных величин.
+void print(int n[100][100], int sums[100]){
+    for (int i = 0; i < 100; i++){
+        for (int j = 0; j < 100; j++){
+            std::cout << n[i][j] << " ";
+        }
+        std::cout << " " << sums[i] << endl;
+    }
+}                                      
 void task(){
     // иницализация и заполнение матрицы случайными числами от 1 до 100
     int n[100][100]{}, sums[100]{};
@@ -22,13 +29,7 @@ void task(){
         sums[i] = sum;
     }
     // !ВЫВОД!
-    for (int i = 0; i < 100; i++){
-        for (int j = 0; j < 100; j++){
-            std::cout << n[i][j] << " ";
-        }
-        std::cout << " " << sums[i] << endl;
-    }
-
+    print(n, sums);
     std::cout << "Sorted:" << endl;
     // Сортировка матрицы
     for (int i = 1; i < 100; i++){
@@ -40,12 +41,7 @@ void task(){
         }
     }
     // !ВЫВОД!
-    for (int i = 0; i < 100; i++){
-        for (int j = 0; j < 100; j++){
-            std::cout << n[i][j] << " ";
-        }
-        std::cout << " " << sums[i] << endl;
-    }
+    print(n, sums);
 }
 
 int main(){
